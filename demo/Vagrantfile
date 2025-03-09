@@ -1,0 +1,30 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vagrant.plugins = "vagrant-libvirt"
+  config.vm.box = "generic/ubuntu2204"
+
+  # Data
+  config.vm.synced_folder ".", "/vagrant_data",
+    type: "rsync",
+    rsync__exclude: [
+      ".git/.*",
+      "terraform/.terraform/.*",
+      "terraform/.terraform.lock.hcl",
+      ".vagrant/.*",
+    ]
+
+  config.vm.provider "libvirt" do |vb|
+    vb.memory = "2048"
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    # Enable serial console
+    systemctl enable --now serial-getty@ttyS0.service
+    # Install k3s
+    sh /vagrant_data/scripts/install-k3s.sh
+    # Install tools
+    sh /vagrant_data/scripts/install-tools.sh
+  SHELL
+end
