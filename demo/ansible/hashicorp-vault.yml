@@ -1,0 +1,27 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Write a secret to vault
+      community.hashi_vault.vault_kv2_write:
+        url: http://localhost:80
+        path: ansible/generated
+        engine_mount_point: clt2025
+        data:
+          generated: >-
+            A generated secret {{
+              lookup("ansible.builtin.password",
+                     "/dev/null",
+                     chars=["ascii_lowercase", "digits"],
+                     length=8)
+            }}
+
+    - name: Read a secret from vault
+      ansible.builtin.debug:
+        msg: >-
+          {{ 
+            lookup("community.hashi_vault.vault_kv2_get", 
+                   "ansible/static",
+                   engine_mount_point="clt2025",
+                   url="http://localhost:80")
+                   .raw.data.data
+          }}

@@ -1,0 +1,6 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Show encrypted ansible vault fact
+      ansible.builtin.debug:
+        msg: "The secret is: {{ kubernetes_secret }}"
