@@ -1,0 +1,5 @@
+# Vagrant state
+demo/.vagrant
+# Static slides
+output
+
