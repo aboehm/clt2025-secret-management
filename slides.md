@@ -27,7 +27,7 @@ Alexander Böhm
 </span>
 </div>
 * <!-- .element: class="fragment" -->Arbeit im Team
-* <!-- .element: class="fragment" -->Continous Integration/Delivery
+* <!-- .element: class="fragment" -->Continuous Integration/Delivery
 * <!-- .element: class="fragment" -->Automation
 
 ---
@@ -106,10 +106,10 @@ detect-secrets audit .secrets.baseline
 
 ## Lösungen
 
-* Ansible Vault
-* Mozilla SOPS
-* Bitnami Sealed Secrets
-* HashiCorp Vault
+* [Ansible Vault](https://docs.ansible.com/ansible/latest/vault_guide/vault.html)
+* [Mozilla SOPS](https://github.com/getsops/sops)
+* [Bitnami Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets)
+* [HashiCorp Vault](https://www.vaultproject.io/)
 
 ---
 
@@ -120,12 +120,12 @@ detect-secrets audit .secrets.baseline
 * <!-- .element: class="fragment" -->versch. Vaults mögl.
 * <!-- .element: class="fragment" -->Integration
   * Ansible: Direkte Integration
-  * OpenTofu/Terraform: Community Provider
+  * Terraform: Community Provider
   * Kubernetes: Deployment als Secrets
 
 ---
 
-#### Benutzung Ansible
+#### Benutzung
 
 ```sh [1-2|4-5|7-8|10-11]
 # Verschl. Datei erstellen
@@ -306,12 +306,12 @@ spec:
 ### HashiCorp Vault
 
 * Server-gestützt
-* <!-- .element: class="fragment" -->Vault Freischaltung notw. 
+* <!-- .element: class="fragment" -->Vault Freischaltung notw.
 * <!-- .element: class="fragment" --> Umfangr. Zugriffsverwaltung
 * <!-- .element: class="fragment" -->Integration
-  * ✅ Kubernetes-Operator 
-  * ✅ Community-Support Ansible
-  * ✅ Terraform Provider
+  * Kubernetes offz. Operator 
+  * Ansbile: Community
+  * Terraform: offz. Provider
 
 ---
 
@@ -487,11 +487,10 @@ spec:
 * <!-- .element: class="fragment" -->Verschied. Lösungen
 * <!-- .element: class="fragment" -->Verschied. Konzept & Workflows
 * <!-- .element: class="fragment" -->Unterschiedl. Komplexität
-* <!-- .element: class="fragment" -->⚠️ Stolpferfallen<img class="fragment" src="media/Meme-Doku.jpg" style="width: 8em; position: fixed; left: 18em; top: 3em">
+* <!-- .element: class="fragment" -->⚠️  Stolperfallen<img class="fragment" src="media/Meme-Doku.jpg" style="width: 8em; position: fixed; left: 18em; top: 3em">
 <br>
 <br>
 <div class="fragment" style="font-size: xx-large">
 <strong>Nachfragen / Folien / Demo</strong><br>
 <span><a href="https://github.com/aboehm/clt2025-secret-management">github.com/aboehm/clt2025-secret-management</a></span><br>
-<span>alexander.boehm@malbolge.net</span>
 </div>
