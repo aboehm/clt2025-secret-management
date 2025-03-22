@@ -35,6 +35,10 @@ Behandelte Lösungen:
 * [HashiCorp Vault](https://www.vaultproject.io/)
 * [SOPS](https://getsops.io/)
 
+## Offene Punkte
+
+* Demo Files sind noch nicht vollständig
+
 ## Slides
 
 ```sh
