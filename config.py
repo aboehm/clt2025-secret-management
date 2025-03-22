@@ -7,11 +7,11 @@ with the default options.
 
 REVEAL_META = {
     # Title of the slide
-    "title": "The title",
+    "title": "Dein Geheimnis ist bei mir sicher",
     # Author in the metadata of the slide
-    "author": "Some Author",
+    "author": "Alexander Böhm",
     # Description in the metadata of the slide
-    "description": "Some description",
+    "description": "",
 }
 
 # Reveal markdown slide separator
