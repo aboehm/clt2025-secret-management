@@ -494,3 +494,9 @@ spec:
 <strong>Nachfragen / Folien / Demo</strong><br>
 <span><a href="https://github.com/aboehm/clt2025-secret-management">github.com/aboehm/clt2025-secret-management</a></span><br>
 </div>
+
+# Anmerkungen Publikum
+
+* Weiteres Tool [git credential](https://git-scm.com/docs/git-credential)
+* OSS Fork von HashiCorp Vault: [OpenBao](https://openbao.org/)
+* Kubernetes ist nicht notwendig außer für Bitnami Sealed Secrets
