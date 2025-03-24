@@ -1,0 +1,6 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Show encrypted SOPS content
+      ansible.builtin.debug:
+        msg: "The secret is: {{ lookup('community.sops.sops', '../sops-secret.txt') }}"

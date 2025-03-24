@@ -1,0 +1,28 @@
+# Based on vault operator tutorial
+# https://github.com/hashicorp-education/learn-vault-secrets-operator/blob/main/vault/vault-auth-static.yaml
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  namespace: vault-secrets-operator-system
+  name: vault-access
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  namespace: clt2025
+  name: vault-access
+---
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultAuth
+metadata:
+  name: static-auth
+  namespace: clt2025
+spec:
+  method: kubernetes
+  mount: kubernetes-access
+  kubernetes:
+    role: clt2025-readonly
+    serviceAccount: vault-access
+    audiences:
+      - vault

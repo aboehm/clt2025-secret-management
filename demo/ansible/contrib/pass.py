@@ -2,5 +2,5 @@
 
 import os
 
-with open(f"{os.environ.get('HOME')}/vault.secret") as f:
+with open(f"{os.environ.get('HOME')}/.ansible-vault-pass") as f:
     print(str(f.read()), end='')

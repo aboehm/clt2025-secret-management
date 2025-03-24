@@ -14,26 +14,43 @@ Dafür gibt es mittlerweile diverse Projekte und Produkte, die verschiedenen Ans
 
 ## Demo
 
-Für das Demo wird [Vagrant](https://www.vagrantup.com/) benötigt. Die Vagrant Box provisioniert am Anfang alle Tools und Services. Zum Start folgendes ausführen:
+Für das Demo wird [Vagrant](https://www.vagrantup.com/) benötigt. Behandelte Lösungen sind dabei
+
+* [Ansible Vault](https://docs.ansible.com/ansible/latest/vault_guide/vault.html)
+* [Bitnami Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets)
+* [HashiCorp Vault](https://www.vaultproject.io/)
+* [SOPS](https://getsops.io/)
+
+
+Die Vagrant Box provisioniert am Anfang alle Tools und Services. Zum Start folgendes ausführen:
 
 ```sh
+# Vagrant Box starten und provisionieren
 cd demo
 vagrant up
 ```
 
-Behandelete Plattformen:
+Bei der Provisionierung werden mehrere Skripte und unterteilt sich in drei Abschnitte.
 
-* [Ansible](https://docs.ansible.com/)
-* [Kubernetes](https://kubernetes.io/)
-* [Terraform](https://www.terraform.io/) / [OpenTofu](https://opentofu.org/)
+Zuerst werde die Basisdienste & Tools installiert
 
-Behandelte Lösungen:
+* `install-k3s.sh`: Installiert einen Kubernetes cluster
+* `install-tools.sh`: Installiert die verschiedene Tools wie `ansible`, `helm`, `sops`, etc.
+* `install-sealed-secrets.sh`: Installiert Bitnami Sealed Secrets
+* `install-vault.sh`: Installiert HashiCorp Vault
 
-* [Ansible Vault](https://docs.ansible.com/ansible/latest/vault_guide/vault.html)
-* [Bitnami Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets)
-* [detect-secrets](https://github.com/Yelp/detect-secrets)
-* [HashiCorp Vault](https://www.vaultproject.io/)
-* [SOPS](https://getsops.io/)
+Danach werden die Secrets und Konfiguration vorbereitet:
+
+* `prepare-ansible-vault.sh`
+* `prepare-sealed-secrets.sh`
+* `prepare-sops.sh`
+* `prepare-vault.sh`
+
+Am Ende werden die Beispiele für Ansible, Kubernetes und Terraform angewendet
+
+* `run-ansible.sh`
+* `run-kubernetes.sh`
+* `run-terraform.sh`
 
 ## Offene Punkte
 

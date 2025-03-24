@@ -3,8 +3,8 @@
   tasks:
     - name: Write a secret to vault
       community.hashi_vault.vault_kv2_write:
-        url: http://localhost:80
-        path: ansible/generated
+        url: http://vault.demo.local
+        path: ansible
         engine_mount_point: clt2025
         data:
           generated: >-
@@ -20,8 +20,8 @@
         msg: >-
           {{ 
             lookup("community.hashi_vault.vault_kv2_get", 
-                   "ansible/static",
+                   "ansible",
                    engine_mount_point="clt2025",
-                   url="http://localhost:80")
+                   url="http://vault.demo.local")
                    .raw.data.data
           }}

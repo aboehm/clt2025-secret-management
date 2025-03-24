@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
     type: "rsync",
     rsync__exclude: [
       ".git/.*",
-      "terraform/.terraform/.*",
+      "terraform/.terraform/",
       "terraform/.terraform.lock.hcl",
       ".vagrant/.*",
     ]
@@ -22,9 +22,21 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     # Enable serial console
     systemctl enable --now serial-getty@ttyS0.service
+
+    cd /vagrant_data
     # Install k3s
-    sh /vagrant_data/scripts/install-k3s.sh
-    # Install tools
-    sh /vagrant_data/scripts/install-tools.sh
+    scripts/install-k3s.sh
+    # Install services
+    scripts/install-sealed-secrets.sh
+    scripts/install-vault.sh
+    # Prepare secrets
+    scripts/prepare-ansible-vault.sh
+    scripts/prepare-sealed-secrets.sh
+    scripts/prepare-sops.sh
+    scripts/prepare-vault.sh
+    # Run all demo examples
+    scripts/run-ansible.sh
+    scripts/run-kubernetes.sh
+    scripts/run-terraform.sh
   SHELL
 end

@@ -1,0 +1,13 @@
+server:
+  logLevel: debug
+  ingress:
+    enabled: true
+    hosts:
+      - host: vault.demo.local
+ui:
+  enabled: true
+  serviceType: "LoadBalancer"
+  externalPort: 8200
+
+injector:
+  enabled: "false"
